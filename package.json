@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "周报自动生成工具",
   "main": "server.mjs",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "start": "node server.mjs"
-  },
-  "dependencies": {
-    "express": "^4.18.2"
   }
 }
