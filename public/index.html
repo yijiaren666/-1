@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>周报自动生成器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="control-panel">
+        <div>
+          <p class="eyebrow">Weekly Report</p>
+          <h1>周报自动生成器</h1>
+          <p class="subtitle">连接飞书 · 一键生成</p>
+        </div>
+
+        <label class="field">
+          <span>飞书文档链接</span>
+          <textarea id="docUrl" rows="5" spellcheck="false" placeholder="粘贴飞书多维表格链接...">https://gcn4xrjs3g9w.feishu.cn/base/PeSZbKuNialdcxsggKJcwQm2nVh?table=tbllHUBg3yg4rXSV&view=vewM1Y9Vem</textarea>
+        </label>
+
+        <label class="field">
+          <span>周报起始日</span>
+          <input id="weekStart" type="date" value="2026-05-19" />
+        </label>
+
+        <button id="generateBtn" class="primary-button" type="button">生成周报</button>
+        <button id="copyBtn" class="ghost-button" type="button">复制周报</button>
+        <div class="status-line" id="statusLine">等待生成</div>
+      </aside>
+
+      <section class="report-page">
+        <header class="report-title-block">
+          <div>
+            <p class="label">周报标题</p>
+            <h2 id="weekTitle">2026-05-19 至 2026-05-25 周报</h2>
+          </div>
+          <span id="completionBadge" class="metric-badge">完成率 0%</span>
+        </header>
+
+        <section class="card hero-summary">
+          <div class="section-head">
+            <div class="left-group">
+              <span class="icon-badge">AI</span>
+              <h3>AI 本周摘要</h3>
+            </div>
+          </div>
+          <div id="summaryText" class="editable" contenteditable="true">生成后将在此展示。</div>
+        </section>
+
+        <section class="two-column">
+          <div class="card">
+            <div class="section-head">
+              <div class="left-group">
+                <span class="icon-badge">&#9679;</span>
+                <h3>投入分布</h3>
+              </div>
+              <span class="section-tag">按内容类型</span>
+            </div>
+            <canvas id="distributionChart" width="420" height="240"></canvas>
+            <div id="distributionLegend" class="legend"></div>
+          </div>
+
+          <div class="card">
+            <div class="section-head">
+              <div class="left-group">
+                <span class="icon-badge">&#8644;</span>
+                <h3>本周 vs 上周</h3>
+              </div>
+              <span class="section-tag">核心变化</span>
+            </div>
+            <div id="comparisonGrid" class="comparison-grid"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div class="left-group">
+              <span class="icon-badge">&#9733;</span>
+              <h3>本周核心成果 TOP3</h3>
+            </div>
+            <span class="section-tag">按优先级与完成情况排序</span>
+          </div>
+          <div id="achievementTimeline" class="timeline"></div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div class="left-group">
+              <span class="icon-badge">&#8635;</span>
+              <h3>长周期事项进度</h3>
+            </div>
+            <span class="section-tag">阶段 / 周期 / 延迟</span>
+          </div>
+          <div id="longRunningList" class="long-list"></div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div class="left-group">
+              <span class="icon-badge">&#9888;</span>
+              <h3>风险洞察</h3>
+            </div>
+            <span class="section-tag">可编辑</span>
+          </div>
+          <div id="riskText" class="editable" contenteditable="true">生成后将在此展示。</div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div class="left-group">
+              <span class="icon-badge">&#9881;</span>
+              <h3>高频任务与重复任务 SOP</h3>
+            </div>
+            <span class="section-tag">可编辑</span>
+          </div>
+          <div id="sopText" class="editable" contenteditable="true">生成后将在此展示。</div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div class="left-group">
+              <span class="icon-badge">&#9997;</span>
+              <h3>下周任务安排</h3>
+            </div>
+            <span class="section-tag">可编辑</span>
+          </div>
+          <div id="nextWeekText" class="editable" contenteditable="true">生成后将在此展示。</div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
